@@ -29,8 +29,16 @@ class ScholarshipCalculatorTest {
     @Test void scholarshipFifty() { assertEquals(50, calc.scholarship(3.2, 20, false)); }
     @Test void scholarshipNone() { assertEquals(0, calc.scholarship(2.0, 20, false)); }
 
-    // --- Part C: loop boundary for gpa() (0 / 1 / 2+ iterations) ---
-    // 0 iterations: gpaEmptyThrows and gpaNullThrows (above)
+    // --- Part C
     @Test void gpaLoopOneIteration() { assertEquals(4.0, calc.gpa(new double[]{95}), 1e-9); }
     @Test void gpaLoopManyIterations() { assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 1e-9); }
+
+    // --- Part D
+    @Test void letterGradeBoundary60IsD() { assertEquals("D", calc.letterGrade(60)); }
+    @Test void letterGradeBoundary5999IsF() { assertEquals("F", calc.letterGrade(59.99)); }
+    @Test void letterGradeBoundary6999IsD() { assertEquals("D", calc.letterGrade(69.99)); }
+    @Test void letterGradeBoundary0IsF() { assertEquals("F", calc.letterGrade(0)); }
+    @Test void letterGradeBoundary100IsA() { assertEquals("A", calc.letterGrade(100)); }
+    @Test void letterGradeBoundary8999IsB() { assertEquals("B", calc.letterGrade(89.99)); }
+    @Test void letterGradeBoundary90IsA() { assertEquals("A", calc.letterGrade(90)); }
 }
