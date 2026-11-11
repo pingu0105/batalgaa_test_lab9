@@ -28,4 +28,9 @@ class ScholarshipCalculatorTest {
     @Test void scholarshipHighGpaLowCredits() { assertEquals(50, calc.scholarship(3.9, 10, false)); }
     @Test void scholarshipFifty() { assertEquals(50, calc.scholarship(3.2, 20, false)); }
     @Test void scholarshipNone() { assertEquals(0, calc.scholarship(2.0, 20, false)); }
+
+    // --- Part C: loop boundary for gpa() (0 / 1 / 2+ iterations) ---
+    // 0 iterations: gpaEmptyThrows and gpaNullThrows (above)
+    @Test void gpaLoopOneIteration() { assertEquals(4.0, calc.gpa(new double[]{95}), 1e-9); }
+    @Test void gpaLoopManyIterations() { assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 1e-9); }
 }
